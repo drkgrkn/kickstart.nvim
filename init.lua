@@ -118,6 +118,8 @@ vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
 vim.o.breakindent = true
+vim.o.shiftwidth = 4
+vim.o.expandtab = false
 
 -- Enable undo/redo changes even after closing and reopening a file
 vim.o.undofile = true
@@ -858,7 +860,7 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    -- 'folke/tokyonight.nvim',
+    'folke/tokyonight.nvim',
     'ellisonleao/gruvbox.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
