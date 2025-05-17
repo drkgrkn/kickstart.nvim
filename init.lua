@@ -234,6 +234,8 @@ vim.keymap.set('n', '<space>st', function()
   vim.api.nvim_win_set_height(0, 15)
 end)
 
+vim.keymap.set('n', '<space>x', ':Ex<CR>', { desc = 'Open Explorer' })
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -810,11 +812,17 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         go = { 'goimports', 'gofumpt' },
+        c = { 'clang_format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      },
+      formatters = {
+        clang_format = {
+          prepend_args = { '-style=file', '-fallback-style=LLVM' },
+        },
       },
     },
   },
